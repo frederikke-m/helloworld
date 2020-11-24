@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+} /* border-box betyder, at border, padding og boxen = antal pixels. Man skal altså ikke til at lægge padding og borderen til antallet af pixels, boxen skal være */
+
+.wrapper > * { /* >* = alt hvad der ligger i wrapper-classen får denne style. ul bliver ikke targeted, da den er child (underlæggende element) til nav-tagget */
+  border: 2px solid #f08c00;
+  background-color: #ffec99;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header {
+  grid-area: header;
+}
+
+.nav {
+  grid-area: nav;
+}
+
+.content {
+  grid-area: content;
+}
+
+.side {
+  grid-area: side;
+}
+
+.ad {
+  grid-area: ad;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  height: 100vh;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "side content"
+    "ad footer";
+}
+
+@media only screen and (min-width: 800px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 20px;
+    height: 100vh;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+      "header header header"
+      "nav content side"
+      "nav content ad"
+      "footer footer footer";
+  }
+
+  ul {
+    flex-direction: column;
+}
